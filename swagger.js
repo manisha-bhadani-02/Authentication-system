@@ -21,6 +21,10 @@ const options = {
       {
         url: "https://authentication-system-vaur.onrender.com",
         description: "Production server (Render)"
+      },
+      {
+        url: "http://localhost:8000",
+        description: "Development server (Local)"
       }
     ],
     components: {
