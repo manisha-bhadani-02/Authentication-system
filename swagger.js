@@ -19,12 +19,8 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:8000',
-        description: 'Development server'
-      },
-      {
-      url: "https://authentication-system-vaur.onrender.com",
-      description: "Production server (Render)"
+       url: "https://authentication-system-vaur.onrender.com",
+       description: "Production server (Render)"
     }
     ],
     components: {
@@ -43,4 +39,5 @@ const options = {
 const specs = swaggerJSDoc(options);
 
 export { specs, swaggerUi };
+
 
