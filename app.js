@@ -1,22 +1,22 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import express, { json } from 'express';
+import express from 'express';
 import connectDb from './config/connectdb.js';
 
-//import files
+// Import routes and swagger
 import userRoutes from './routes/userRoutes.js';
 import { specs, swaggerUi } from './swagger.js';
 
 const app = express();
 
-// port 
+// Port (Render automatically sets process.env.PORT)
 const PORT = process.env.PORT || 8000;
 
-//database connection
+// Database connection
 connectDb();
 
-//middleware
+// Middleware
 app.use(express.json());
 
 // Swagger Documentation
@@ -29,15 +29,18 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, {
 // Load Routes
 app.use("/api/user", userRoutes);
 
+// Root endpoint
 app.get('/', (req, res) => {
+  const protocol = req.protocol;    // http or https
+  const host = req.get('host');     // domain or localhost
   res.json({
     message: 'Authentication System API',
-    documentation: 'http://localhost:8000/api-docs',
+    documentation: `${protocol}://${host}/api-docs`,
     version: '1.0.0'
   });
 });
 
-app.listen(PORT, ()=>{
-    console.log(`server running at http://localhost:${PORT}`);
-    console.log(`API Documentation available at http://localhost:${PORT}/api-docs`);
-})
+// Start server
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
