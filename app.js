@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express, { json } from 'express';
-import connectDb from './config/connectDb.js';
+import connectDb from './config/connectdb.js';
 
 //import files
 import userRoutes from './routes/userRoutes.js';
