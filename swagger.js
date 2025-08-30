@@ -19,9 +19,9 @@ const options = {
     },
     servers: [
       {
-       url: "https://authentication-system-vaur.onrender.com",
-       description: "Production server (Render)"
-    }
+        url: "https://authentication-system-vaur.onrender.com",
+        description: "Production server (Render)"
+      }
     ],
     components: {
       securitySchemes: {
@@ -39,5 +39,3 @@ const options = {
 const specs = swaggerJSDoc(options);
 
 export { specs, swaggerUi };
-
-
